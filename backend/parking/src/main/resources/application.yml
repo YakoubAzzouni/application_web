@@ -1,0 +1,5 @@
+app:
+    datasource: # information de la base de donner dans docker
+      jdbc-url: jdbc:postgresql://localhost:5432/parking
+      username: postgres
+      password: root
