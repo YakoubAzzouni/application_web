@@ -19,13 +19,24 @@ public class ParkingDaraAccesService implements ParkingDAO {
     }
 
     @Override
-    public void addParking(Parking park) {
-
+    public int addParking(UUID parking_id, Parking park) {
+        String sql = "INSERT INTO parking (parking_id, name, prix) VALUES (?, ?, ?)";
+        return jdbcTemplate.update(
+                sql,
+                parking_id,
+                park.getName(),
+                park.getPrix()
+        );
     }
 
     @Override
-    public void deleteParking(Parking park) {
-
+    public int deleteParking(UUID park_id) {
+        String sql = "DELETE FROM parking WHERE parking_id=? ";
+        String parking_id = park_id.toString();
+        return jdbcTemplate.update(
+                sql,
+                parking_id
+        );
     }
 
     @Override

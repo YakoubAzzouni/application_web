@@ -11,7 +11,7 @@ public class Parking {
     private String name;
     private double prix;
 
-    public Parking(@JsonProperty("parking_id") UUID parking_id,
+    public Parking(/*@JsonProperty("parking_id")*/ UUID parking_id,
                    @JsonProperty("name") String name,
                    @JsonProperty("prix") double prix) {
 
