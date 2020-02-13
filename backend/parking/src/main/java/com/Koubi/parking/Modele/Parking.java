@@ -1,24 +1,41 @@
 package com.Koubi.parking.Modele;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Parking {
+@Entity
+public class Parking implements Serializable {
 
+    @Id
+    @Column(updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
     private UUID parking_id;
+
+    @Column
+    @NotNull
     private String name;
+
+    @Column
+    @NotNull
     private double prix;
 
-    public Parking(/*@JsonProperty("parking_id")*/ UUID parking_id,
-                   @JsonProperty("name") String name,
+    public Parking(@JsonProperty("name") String name,
                    @JsonProperty("prix") double prix) {
-
-        this.parking_id = parking_id;
         this.name = name;
         this.prix = prix;
     }
+
+    public Parking() {}
 
     public String getName() {
         return name;
@@ -36,14 +53,6 @@ public class Parking {
         this.prix = prix;
     }
 
-    @Override
-    public String toString() {
-        return "Parking{" +
-                "parking_id=" + parking_id +
-                ", name='" + name + '\'' +
-                ", prix=" + prix +
-                '}';
-    }
 
     public UUID getParking_id() {
         return parking_id;

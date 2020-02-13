@@ -1,38 +1,51 @@
 package com.Koubi.parking.service;
 
 import com.Koubi.parking.Modele.Parking;
-import com.Koubi.parking.dao.ParkingDAO;
+
+import com.Koubi.parking.repository.ParkingRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.ServiceMode;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+
 @Service // ndirha f service
 public class ParkingService {
-    private final ParkingDAO parkingdao;
 
-    @Autowired // avant chaque constructeu   // qualifer besh n9olo bali base de donner postgres on peut faire chaque objet la base ta3o
-    public ParkingService(@Qualifier("postgres") ParkingDAO parkingdao) {
-        this.parkingdao = parkingdao;
+    @Autowired
+    private ParkingRepository pr;
+    // n3ayto l repository
+    //get all parkings
+    public Iterable<Parking> GetAllParking(){
+        return pr.findAll();
     }
 
-    public  List<Parking> GetAllParking() {
-        return parkingdao.GetAllParking();
+    // get parking by id
+    public Parking getParkingById(UUID parking_id){
+        return pr.findById(parking_id).get();
     }
 
-    public int addParking(Parking park) {
-        UUID idTmp = null;
-        UUID parking_id = Optional.ofNullable(idTmp)
-                .orElse(UUID.randomUUID());
-
-        return parkingdao.addParking(parking_id, park);
+    //insert into parking
+    public Parking insertParking(Parking park){
+       return  pr.save(park); // we have to do
     }
 
-    public int deleteParking(UUID parking_id){
-        return parkingdao.deleteParking(parking_id);
+    //delete parking
+    public Parking deleteParking(UUID parking_id){
+        Parking parking = pr.findById(parking_id).get();
+        pr.deleteById(parking_id);
+        return parking;
     }
+
+    // update parking by id
+    public Parking updateParking(UUID id, Parking park){
+        Parking p = pr.findById(id).get();
+        p.setName(park.getName());
+        p.setPrix(park.getPrix());
+        return pr.save(p) ;
+    }
+
+
 }
