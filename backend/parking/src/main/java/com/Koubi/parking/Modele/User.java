@@ -1,25 +1,42 @@
 package com.Koubi.parking.Modele;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.UUID;
 
-public class User {
+@Entity
+public class User implements Serializable {
+
+    @Id
+    @Column(updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
     private UUID user_id;
-    private double car_plate_number;
+
+    @Column
+    @NotNull
     private String user_name;
-    private String user_password;
 
-    public User(double car_plate_number, String user_name, String user_password) {
-        this.car_plate_number = car_plate_number;
+   @Column
+   @NotNull
+    private String password;
+
+    public User(@JsonProperty("user_name") String user_name,
+                @JsonProperty("password") String password){
         this.user_name = user_name;
-        this.user_password = user_password;
+        this.password = password;
     }
-
-    public double getCar_plate_number() {
-        return car_plate_number;
-    }
-
-    public void setCar_plate_number(double car_plate_number) {
-        this.car_plate_number = car_plate_number;
+    public User() {
     }
 
     public String getUser_name() {
@@ -30,11 +47,15 @@ public class User {
         this.user_name = user_name;
     }
 
-    public String getUser_password() {
-        return user_password;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUser_password(String user_password) {
-        this.user_password = user_password;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UUID getUser_id() {
+        return user_id;
     }
 }

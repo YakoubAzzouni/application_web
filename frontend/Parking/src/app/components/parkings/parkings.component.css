@@ -1,0 +1,44 @@
+.example-card {
+  max-width: 400px;
+  margin-top: 15px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.fa-minus-circle{
+  margin-left: 270px;
+  margin-right: 10px;
+  font-size: 2.5em;
+}
+
+.fa-minus-circle:hover{
+  color: rgba(0, 47, 255, 0.685);
+  cursor: pointer;
+}
+
+.fa-edit:hover{
+  color: rgba(0, 47, 255, 0.685);
+  cursor: pointer;
+}
+.fa-edit{
+  margin-left: 10px;
+  margin-right: 5px;
+  font-size: 2.5em;
+}
+.btn-outline-dark{
+  background: white;
+}
+.btn-outline-dark:hover{
+  color: white;
+  background: rgba(0, 47, 255, 0.685);
+}
+.close:hover{
+  color: white;
+  background: rgba(0, 47, 255, 0.685);
+}
+.fa-car{
+  font-size: 2.5em;
+}

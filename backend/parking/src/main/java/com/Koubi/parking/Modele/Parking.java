@@ -2,18 +2,19 @@ package com.Koubi.parking.Modele;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Set;
 import java.util.UUID;
 
-@Entity
+@Entity()
+//@Table(name = "parking")
 public class Parking implements Serializable {
 
     @Id
-    @Column(updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
+    @Column(/*name = "parking_id",*/ updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
@@ -28,6 +29,10 @@ public class Parking implements Serializable {
     @Column
     @NotNull
     private double prix;
+
+    /*@ManyToOne
+    @JoinColumn(name="adress_id", nullable = false)
+    private Adress adress;*/
 
     public Parking(@JsonProperty("name") String name,
                    @JsonProperty("prix") double prix) {
