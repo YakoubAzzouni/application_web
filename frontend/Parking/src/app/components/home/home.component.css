@@ -1,0 +1,13 @@
+
+
+.conteneur{
+  display:inline-block;
+}
+
+.content{
+  opacity:0;
+}
+
+.conteneur:hover .content {
+  opacity:1;
+}

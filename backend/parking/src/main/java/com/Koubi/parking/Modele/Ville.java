@@ -1,17 +1,21 @@
 package com.Koubi.parking.Modele;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
-//@Table(name = "adress")
-public class Adress implements Serializable {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "ville")
+public class Ville implements Serializable {
 
     @Id
     @Column(updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
@@ -20,11 +24,7 @@ public class Adress implements Serializable {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    private UUID adress_id;
-
-    @Column
-    @NotNull
-    private String rue;
+    private UUID ville_id;
 
     @Column
     @NotNull
@@ -34,26 +34,18 @@ public class Adress implements Serializable {
     @NotNull
     private int code;
 
-    /*@OneToMany(mappedBy = "parking")
-    private Set<Parking> parkings;*/
+    @OneToMany(mappedBy = "ville", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonBackReference
+    private List<Parking> parkings;
 
 
-    public Adress(@JsonProperty("rue") String rue,
-                  @JsonProperty("cuty") String city,
+    public Ville(
+                  @JsonProperty("city") String city,
                   @JsonProperty("code") int code){
-        this.rue = rue;
         this.city = city;
         this.code = code;
     }
-    public Adress(){}
-
-    public String getRue() {
-        return rue;
-    }
-
-    public void setRue(String rue) {
-        this.rue = rue;
-    }
+    public Ville(){}
 
     public String getCity() {
         return city;
@@ -71,7 +63,11 @@ public class Adress implements Serializable {
         this.code = code;
     }
 
-    public UUID getAdress_id() {
-        return adress_id;
+    public UUID getVille_id() {
+        return ville_id;
+    }
+
+    public List<Parking> getParkings() {
+        return parkings;
     }
 }

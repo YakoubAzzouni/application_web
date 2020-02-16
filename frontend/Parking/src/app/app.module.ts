@@ -12,6 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ParkingsComponent } from './components/parkings/parkings.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FlexLayoutModule,
     MatCardModule,
     MatButtonModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

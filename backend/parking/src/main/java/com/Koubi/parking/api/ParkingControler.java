@@ -42,9 +42,9 @@ public class ParkingControler {
     }
 
     @PutMapping("{parking_id}")
-    private @ResponseBody Parking updateParking(@PathVariable("parking_id") UUID parking_id,
+    private @ResponseBody Parking editParking(@PathVariable("parking_id") UUID parking_id,
                                                 @RequestBody Parking park){
 
-        return parkingservice.updateParking(parking_id, park);
+        return parkingservice.editParking(parking_id, park);
     }
 }

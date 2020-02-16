@@ -42,8 +42,37 @@ export class ParkingService {
       .set('Accept', 'application/json')
     }
     );
-
   }
 
+  insertParking(parking){
+    return this.httpClient.post(this.API_URL + "/parking",
+    JSON.stringify(parking), // nzidouha f post
+    {
+      headers: new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+    }
+    );
+  }
+  /****** methode de ville *****/
+  getAllVille(){
+    return this.httpClient.get(this.API_URL + "ville",
+    {
+      headers: new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+    }
+    );
+  }
 
+  insertVille(ville){
+    return this.httpClient.post(this.API_URL + "/ville",
+    JSON.stringify(ville), // nzidouha f post
+    {
+      headers: new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+    }
+    );
+  }
 }

@@ -40,10 +40,13 @@ public class ParkingService {
     }
 
     // update parking by id
-    public Parking updateParking(UUID id, Parking park){
+    public Parking editParking(UUID id, Parking park){
         Parking p = pr.findById(id).get();
+        p.setAdress(park.getAdress());
+        p.setNb_place(park.getNb_place());
         p.setName(park.getName());
-        p.setPrix(park.getPrix());
+        p.setPrice(park.getPrice());
+        p.setVille(park.getVille());
         return pr.save(p) ;
     }
 
