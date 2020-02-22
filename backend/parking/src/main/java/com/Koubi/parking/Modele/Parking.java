@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.validation.constraints.NegativeOrZero;
+
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.UUID;
@@ -104,4 +104,6 @@ public class Parking implements Serializable {
     public Ville getVille() {
         return ville;
     }
+
+
 }

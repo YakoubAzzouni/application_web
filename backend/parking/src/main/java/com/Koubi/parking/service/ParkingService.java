@@ -5,10 +5,13 @@ import com.Koubi.parking.Modele.Parking;
 import com.Koubi.parking.repository.ParkingRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+
+import java.util.List;
 import java.util.UUID;
+
 
 
 @Service // ndirha f service
@@ -26,6 +29,7 @@ public class ParkingService {
     public Parking getParkingById(UUID parking_id){
         return pr.findById(parking_id).get();
     }
+    
 
     //insert into parking
     public Parking insertParking(Parking park){
