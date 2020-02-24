@@ -27,7 +27,7 @@ public class User implements Serializable {
 
     @Column
     @NotNull
-    private String user_name;
+    private String username;
 
    @Column
    @NotNull
@@ -69,18 +69,18 @@ public class User implements Serializable {
         this.email = email;
         this.plate_number = plate_number;
         this.first_name = first_name;
-        this.user_name = user_name;
+        this.username = user_name;
         this.password = password;
     }
     public User() {
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUsername(String user_name) {
+        this.username = user_name;
     }
 
     public String getPassword() {

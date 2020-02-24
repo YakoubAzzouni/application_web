@@ -5,7 +5,7 @@ import com.Koubi.parking.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-//@CrossOrigin(origins = "http://localhost:4200") //n7ato ta3 angular
+
 @RequestMapping("api/reservation") // besh n9olo win yaffichiha
 @RestController
 public class ReservationControler {

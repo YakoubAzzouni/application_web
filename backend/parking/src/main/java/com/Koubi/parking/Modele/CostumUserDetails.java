@@ -10,7 +10,7 @@ import java.util.Collection;
 public class CostumUserDetails extends User implements UserDetails {
 
     public CostumUserDetails(final User user) {
-        super(  user.getUser_name(),
+        super(  user.getUsername(),
                 user.getPassword(),
                 user.getPlate_number(),
                 user.getFirst_name(),
@@ -31,7 +31,7 @@ public class CostumUserDetails extends User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return super.getUser_name();
+        return super.getUsername();
     }
 
     @Override

@@ -28,12 +28,12 @@ public class CostumUserDetailsService implements UserDetailsService {
     }
 
     public User getUser(String username) {
-        return ur.findByUser_name(username).get();
+        return ur.findByUsername(username).get();
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> optionalUser = ur.findByUser_name(username);
+        Optional<User> optionalUser = ur.findByUsername(username);
 
         optionalUser
                 .orElseThrow(() -> new UsernameNotFoundException("User_name not found"));

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-//@CrossOrigin(origins = "http://localhost:4200") //n7ato ta3 angular
+
 @RequestMapping("api/user") // besh n9olo win yaffichiha
 @RestController
 public class UserControler {
@@ -27,14 +27,13 @@ public class UserControler {
             User user = us.getUser(user_name);
             return "{" +
                     "\"status\": \"LOGGED\"," +
-                    "\"username\": \"" + user.getUser_name() + "\"," +
+                    "\"username\": \"" + user.getUsername() + "\"," +
                     "\"email\": \"" + user.getEmail() + "\"," +
                     "\"role\": \"" + user.getRole() + "\"," +
                     "\"firstname\": \"" + user.getFirst_name() + "\"," +
                     "\"lastname\": \"" + user.getLast_name() + "\"," +
-                    "\"active\": " + user.getPlate_number() +
+                    "\"plate_number\": \"" + user.getPlate_number() + "\"" +
                     "}";
-
         } catch (NullPointerException err){
             return "{" +
                     "\"status\": \"ERROR\"" +

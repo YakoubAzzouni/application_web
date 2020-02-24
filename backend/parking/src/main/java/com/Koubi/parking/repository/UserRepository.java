@@ -7,5 +7,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserRepository extends CrudRepository<User, UUID> {
-    Optional<User> findByUser_name(String user_name); // to find by user_name
+    Optional<User> findByUsername(String user_name); // to find by user_name
 }

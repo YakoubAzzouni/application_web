@@ -1,8 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
 import { ParkingService } from 'src/app/services/parking/parking.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Parking } from 'src/app/models/parking/parking';
 import { Ville } from 'src/app/models/ville/ville';
+import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class ParkingsComponent implements OnInit {
   inserted_ville: Ville;
 
   //**** constructeur *****
-  constructor(private parkingService: ParkingService, config: NgbModalConfig, private modalService: NgbModal){
+  constructor(private parkingService: ParkingService, config: NgbModalConfig, private modalService: NgbModal, @Inject(SESSION_STORAGE) private storage: StorageService){
     config.backdrop = 'static';
     config.keyboard = false;
    }
@@ -49,6 +50,7 @@ export class ParkingsComponent implements OnInit {
     this.getAllParking();
     this.getAllVille();
   }
+
 
   /******  Methodes  ************/
 

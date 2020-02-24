@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import {HttpClient , HttpHeaders} from '@angular/common/http';
+import {HttpClient , HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +13,42 @@ export class LoginService {
    constructor(private httpClient: HttpClient) { }
 
    /********* methodes  **********/
-    getAllUsers(){
-      return this.httpClient.get(this.API_URL + "user",
-       {
+   Login (user) {
+    const body = new HttpParams()
+      .set('username', user.username)
+      .set('password', user.password);
+
+    return this.httpClient.post(this.API_URL + 'login',
+      body.toString(),
+      {
         headers: new HttpHeaders()
-        .set('Content-Type', 'application/json')
-        .set('Accept', 'application/json')
-      });
-    }
+       .set('Content-Type', 'application/x-www-form-urlencoded'),
+        withCredentials: true
+      }
+    );
+  }
+
+  getUser() {
+    return this.httpClient.get(this.API_URL + "user",
+      {
+        headers:  new HttpHeaders()
+          .set('Content-Type', 'application/json')
+          .set('Accept', 'application/json'),
+        withCredentials: true
+      }
+    );
+  }
+
+  logout() {
+    return this.httpClient.get(this.API_URL + "logout",
+      {
+        headers:  new HttpHeaders()
+          .set('Content-Type', 'application/json')
+          .set('Accept', 'application/json'),
+        observe: 'response',
+        withCredentials: true
+      }
+    );
+  }
+
 }

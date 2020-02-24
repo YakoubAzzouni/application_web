@@ -19,7 +19,8 @@ export class ParkingService {
     {
       headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
+      .set('Accept', 'application/json'),
+      withCredentials: true
     }
     );
   }
@@ -29,7 +30,8 @@ export class ParkingService {
     {
       headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
+      .set('Accept', 'application/json'),
+      withCredentials: true
     }
     );
   }
@@ -39,7 +41,8 @@ export class ParkingService {
     {
       headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
+      .set('Accept', 'application/json'),
+      withCredentials: true
     }
     );
   }
@@ -50,7 +53,8 @@ export class ParkingService {
     {
       headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
+      .set('Accept', 'application/json'),
+      withCredentials: true
     }
     );
   }
@@ -60,7 +64,8 @@ export class ParkingService {
     {
       headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
+      .set('Accept', 'application/json'),
+      withCredentials: true
     }
     );
   }
@@ -71,7 +76,8 @@ export class ParkingService {
     {
       headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
+      .set('Accept', 'application/json'),
+      withCredentials: true
     }
     );
   }
