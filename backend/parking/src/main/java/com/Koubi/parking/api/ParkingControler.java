@@ -9,7 +9,7 @@ import java.util.UUID;
 
 
 // tjr ykounou
-@CrossOrigin(origins = "http://localhost:4200") //n7ato ta3 angular
+//@CrossOrigin(origins = "http://localhost:4200") //n7ato ta3 angular
 @RequestMapping("api/parking") // besh n9olo win yaffichiha
 @RestController
 public class ParkingControler {

@@ -49,6 +49,10 @@ public class User implements Serializable {
    @NotNull
    private String email;
 
+   @Column
+   @NotNull
+   private String role;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Reservation> reservations;
@@ -58,7 +62,9 @@ public class User implements Serializable {
                 @JsonProperty("plate_number") String plate_number,
                 @JsonProperty("first_name") String first_name,
                 @JsonProperty("last_name") String last_name,
-                @JsonProperty("email") String email){
+                @JsonProperty("email") String email,
+                @JsonProperty("role") String role){
+        this.role = role;
         this.last_name = last_name;
         this.email = email;
         this.plate_number = plate_number;
@@ -125,5 +131,13 @@ public class User implements Serializable {
 
     public List<Reservation> getReservations() {
         return reservations;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
