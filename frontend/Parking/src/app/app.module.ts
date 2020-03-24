@@ -13,7 +13,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ParkingsComponent } from './components/parkings/parkings.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { StorageServiceModule } from 'angular-webstorage-service'; // so we can save data in session storage
+import { StorageServiceModule } from 'angular-webstorage-service';
+import { RegisterComponent } from './components/register/register/register.component'; // so we can save data in session storage
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { StorageServiceModule } from 'angular-webstorage-service'; // so we can 
     LoginComponent,
     HomeComponent,
     NavBarComponent,
-    ParkingsComponent
+    ParkingsComponent,
+    RegisterComponent
   ],
   imports: [
    BrowserModule,

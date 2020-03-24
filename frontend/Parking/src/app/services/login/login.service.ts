@@ -28,16 +28,6 @@ export class LoginService {
     );
   }
 
-  getUser() {
-    return this.httpClient.get(this.API_URL + "user",
-      {
-        headers:  new HttpHeaders()
-          .set('Content-Type', 'application/json')
-          .set('Accept', 'application/json'),
-        withCredentials: true
-      }
-    );
-  }
 
   logout() {
     return this.httpClient.get(this.API_URL + "logout",

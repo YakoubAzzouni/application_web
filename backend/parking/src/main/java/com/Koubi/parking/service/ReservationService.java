@@ -13,5 +13,9 @@ public class ReservationService  {
 
     public Iterable<Reservation> getAllReservation(){ return rr.findAll();}
 
+    public Reservation creatResarvation(Reservation reservation){
+        return rr.save(reservation);
+    }
+
 }
 

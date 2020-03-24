@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 
 @RequestMapping("api/user") // besh n9olo win yaffichiha
 @RestController
@@ -28,6 +30,7 @@ public class UserControler {
             return "{" +
                     "\"status\": \"LOGGED\"," +
                     "\"username\": \"" + user.getUsername() + "\"," +
+                    "\"user_id\": \"" + user.getUser_id() + "\"," +
                     "\"email\": \"" + user.getEmail() + "\"," +
                     "\"role\": \"" + user.getRole() + "\"," +
                     "\"firstname\": \"" + user.getFirst_name() + "\"," +
@@ -39,5 +42,10 @@ public class UserControler {
                     "\"status\": \"ERROR\"" +
                     "}";
         }
+    }
+
+    @DeleteMapping("{user_id}")
+    private @ResponseBody User deleteUser(@PathVariable("user_id") UUID user_id){
+        return us.deleteUser(user_id);
     }
 }

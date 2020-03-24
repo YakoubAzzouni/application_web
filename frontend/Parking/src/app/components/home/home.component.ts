@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
+import { User } from 'src/app/models/user/user';
 
 
 @Component({
@@ -8,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  user: User = new User();
+
+  constructor(@Inject(SESSION_STORAGE) private storage: StorageService) { }
+
+  get sessionInfo(){
+    return this.storage.get("session");
+  }
 
   ngOnInit(): void {
   }

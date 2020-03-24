@@ -15,12 +15,11 @@ export class NavBarComponent implements OnInit {
   user: User = new User();
   constructor( @Inject(SESSION_STORAGE) private storage: StorageService, private  loginservice: LoginService,  private router: Router) {}
 
-
-  ngOnInit() {
-  }
-
   get sessionInfo(){
     return this.storage.get("session");
+  }
+
+  ngOnInit() {
   }
 
   leave(){

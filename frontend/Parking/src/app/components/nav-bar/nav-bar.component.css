@@ -1,1 +1,14 @@
-
+.fa-grin{
+  color: #17a2b8;
+  font-size: 40px;
+  margin-left: 10px;
+  margin-right: 90px;
+}
+.dropdown-menu.show
+{
+  width: 90px;
+  padding: 8px 0px 0px;
+  background-color: #343a40;
+  size: 100*50;
+  color: white;
+}

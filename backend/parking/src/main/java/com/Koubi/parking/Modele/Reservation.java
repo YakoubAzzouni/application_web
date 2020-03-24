@@ -25,30 +25,48 @@ public class Reservation implements Serializable {
 
     @Column
     @NotNull
-    private Date date;
+    private Date date_in;
+
+    @Column
+    @NotNull
+    private Date date_out;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name="user_id", nullable = false)
     @JsonManagedReference // we have to add
     private User user;
 
-    public Reservation(@JsonProperty("date") Date date,
+    public Reservation(@JsonProperty("date_in") Date date_in,
+                        @JsonProperty("date_out") Date date_out,
                        @JsonProperty("user") User user) {
         this.user = user;
-        this.date = date;
+        this.date_in = date_in;
+        this.date_out = date_out;
     }
 
     public Reservation() {
     }
 
-    public Date getDate() {
-        return date;
+
+    public UUID getReservation_id() {
+        return reservation_id;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public Date getDate_in() {
+        return date_in;
     }
 
+    public void setDate_in(Date date_in) {
+        this.date_in = date_in;
+    }
+
+    public Date getDate_out() {
+        return date_out;
+    }
+
+    public void setDate_out(Date date_out) {
+        this.date_out = date_out;
+    }
 
     public User getUser() {
         return user;
@@ -56,9 +74,5 @@ public class Reservation implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public UUID getReservation_id() {
-        return reservation_id;
     }
 }

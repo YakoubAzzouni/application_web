@@ -34,4 +34,8 @@ public class VilleService {
         vr.deleteById(ville_id); // delete happens here the other thigs to return it
         return tmp_ville;
     }
+
+    public Iterable<Ville> findByCity(String city){
+        return vr.findByCity(city);
+    }
 }

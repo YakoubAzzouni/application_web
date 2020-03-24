@@ -57,7 +57,7 @@ public class User implements Serializable {
     @JsonBackReference
     private List<Reservation> reservations;
 
-    public User(@JsonProperty("user_name") String user_name,
+    public User(@JsonProperty("username") String user_name,
                 @JsonProperty("password") String password,
                 @JsonProperty("plate_number") String plate_number,
                 @JsonProperty("first_name") String first_name,

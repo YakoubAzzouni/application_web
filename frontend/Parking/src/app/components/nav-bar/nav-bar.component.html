@@ -14,14 +14,22 @@
       </li>
 
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-1 my-lg-0">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active" *ngIf="sessionInfo.status != 'LOGGED'">
-          <a class="nav-link" routerLink="/login" >Login <i class="fas fa-sign-in-alt"></i> <span class="sr-only">(current)</span></a>
+        <li class="nav-item active" *ngIf="sessionInfo.status == 'Not Logged'">
+          <a class="nav-link" routerLink="/login" >Login <i class="fas fa-sign-in-alt"  ></i> <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item active" *ngIf="sessionInfo.status == 'LOGGED'">
-          <a class="nav-link" (click)="leave()" >LogOut <i class="fas fa-sign-out-alt"></i> <span class="sr-only">(current)</span></a>
+
+
+        <li class="nav-item active" *ngIf="sessionInfo.status == 'LOGGED'" ngbDropdown>
+          <i class="fas fa-grin" ></i><a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{sessionInfo.username}} <span class="sr-only">(current)</span></a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem style="color: white;" ></button>
+            <button ngbDropdownItem style="color: white;" >Settings</button>
+            <button ngbDropdownItem (click)="leave()" style="color: white;" >LogOut</button>
+          </div>
         </li>
+
       </ul>
 
     </form>

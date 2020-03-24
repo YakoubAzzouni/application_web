@@ -2,6 +2,7 @@ package com.Koubi.parking.api;
 
 import com.Koubi.parking.Modele.Ville;
 import com.Koubi.parking.service.VilleService;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,11 @@ public class VilleControler {
     @GetMapping("{Ville_id}")
     private @ResponseBody Ville getVilleById(@PathVariable("Ville_id") UUID Ville_id){
         return ville_service.getVilleById(Ville_id);
+    }
+
+    @GetMapping("/city/{city}")
+    private @ResponseBody Iterable<Ville> findByCity(@PathVariable("city") String city){
+        return ville_service.findByCity(city);
     }
 
     @GetMapping

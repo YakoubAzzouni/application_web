@@ -2,6 +2,7 @@ package com.Koubi.parking.service;
 
 import com.Koubi.parking.Modele.Parking;
 
+import com.Koubi.parking.Modele.Ville;
 import com.Koubi.parking.repository.ParkingRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class ParkingService {
     public Iterable<Parking> GetAllParking(){
         return pr.findAll();
     }
+
+    public Iterable<Parking> findByVilleCity(String city) { return pr.findByVilleCity(city);}
 
     // get parking by id
     public Parking getParkingById(UUID parking_id){

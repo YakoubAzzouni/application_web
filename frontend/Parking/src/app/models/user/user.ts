@@ -3,8 +3,8 @@ export class User {
   username?: String;
   email?: String;
   role?: String;
-  firstname?: String;
-  lastname?: String;
+  first_name?: String;
+  last_name?: String;
   plate_number?: String;
   password?: String;
 }

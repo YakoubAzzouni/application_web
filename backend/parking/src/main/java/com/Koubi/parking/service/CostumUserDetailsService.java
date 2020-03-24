@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Service
@@ -29,6 +30,12 @@ public class CostumUserDetailsService implements UserDetailsService {
 
     public User getUser(String username) {
         return ur.findByUsername(username).get();
+    }
+
+    public User deleteUser(UUID user_id){
+        User deleted_user = ur.findById(user_id).get();
+        ur.deleteById(user_id);
+        return deleted_user;
     }
 
     @Override

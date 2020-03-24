@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/services/login/login.service';
 import { User } from 'src/app/models/user/user';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   user: User = new User();
   login: User = new User();
-  constructor(private loginService: LoginService, @Inject(SESSION_STORAGE) private storage: StorageService, private router: Router) { }
+  constructor(private loginService: LoginService, @Inject(SESSION_STORAGE) private storage: StorageService,
+              private router: Router, private userService: UserService) { }
 
   ngOnInit() {
 
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
 
  getUser(){
    let promise = new Promise((resolve, reject) =>  {
-    this.loginService.getUser()
+    this.userService.getUser()
     .subscribe((response: any) => {
       resolve(response);
     },
@@ -57,9 +59,14 @@ export class LoginComponent implements OnInit {
           this.user.role = response_user.role;
           this.user.username = response_user.username;
           this.storage.set("session", this.user);
-          if(this.user.role === "admin"){
-          this.router.navigate(['/parkings']);
-        }
+          if(this.user.role === "admin")
+          {
+             this.router.navigate(['/parkings']);
+          }
+          else
+          {
+            this.router.navigate(['/home']);
+          }
         });
       }
    });

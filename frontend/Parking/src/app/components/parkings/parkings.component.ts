@@ -38,17 +38,25 @@ export class ParkingsComponent implements OnInit {
   }
 
   openEdit(content1){
-    this.modalService.open(content1)
+    this.modalService.open(content1);
   }
 
   openAdd(content2){
-    this.modalService.open(content2)
+    this.modalService.open(content2);
+  }
+
+  openReservation(content3){
+    this.modalService.open(content3);
   }
 
 
   ngOnInit() {
     this.getAllParking();
     this.getAllVille();
+  }
+
+  get sessionInfo(){
+    return this.storage.get("session");
   }
 
 

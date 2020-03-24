@@ -24,6 +24,11 @@ public class ParkingControler {
         return parkingservice.GetAllParking();
     }
 
+    @GetMapping("/city/{city}")
+    private Iterable<Parking> findByVilleCity(@PathVariable("city") String city){
+       return  parkingservice.findByVilleCity(city);
+    }
+
     @GetMapping("{parking_id}")
     private Parking getParkingById(@PathVariable("parking_id") UUID parking_id){
         return parkingservice.getParkingById(parking_id);

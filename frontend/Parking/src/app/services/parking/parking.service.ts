@@ -48,7 +48,7 @@ export class ParkingService {
   }
 
   insertParking(parking){
-    return this.httpClient.post(this.API_URL + "/parking",
+    return this.httpClient.post(this.API_URL + "parking",
     JSON.stringify(parking), // nzidouha f post
     {
       headers: new HttpHeaders()
@@ -71,7 +71,7 @@ export class ParkingService {
   }
 
   insertVille(ville){
-    return this.httpClient.post(this.API_URL + "/ville",
+    return this.httpClient.post(this.API_URL + "ville",
     JSON.stringify(ville), // nzidouha f post
     {
       headers: new HttpHeaders()

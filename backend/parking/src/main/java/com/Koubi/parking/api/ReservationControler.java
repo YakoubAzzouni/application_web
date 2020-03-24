@@ -19,4 +19,9 @@ public class ReservationControler {
 
     @GetMapping
     private @ResponseBody Iterable<Reservation> getAllReservation(){ return reservation_service.getAllReservation();}
+
+    @PostMapping
+    private @ResponseBody Reservation creatResarvation( @RequestBody Reservation reservation){
+        return reservation_service.creatResarvation(reservation);
+    }
 }

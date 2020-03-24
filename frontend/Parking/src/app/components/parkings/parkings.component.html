@@ -1,8 +1,10 @@
 <div  fxLayout="row" fxLayoutAlign="start stretch">
   <div fxFlex="14">
       <form class="form-inline md-form form-sm mt-0" fxLayout="row" fxLayoutAlign="start stretch">
+
+
         <div fxFlex="10">
-          <i class="fas fa-plus" (click)="openAdd(content2)" ></i>
+          <i class="fas fa-plus" (click)="openAdd(content2)" *ngIf="sessionInfo.role == 'admin'"></i>
           <!-- modal for add parking  -->
           <ng-template #content2 let-c="close" let-d="dismiss">
             <div class="modal-header">
@@ -61,25 +63,25 @@
                               </div>
                           </div>
                       </div>
-            <!-- end edit -->
+            <!-- end addition-->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-info btn-md" (click)="Add()">Add</button>
             </div>
           </ng-template>
+       </div>
 
-        </div>
         <div fxFlex="90">
             <input class="form-control form-control-sm ml-3 " type="text" placeholder="Search By Name"
             aria-label="Search">
         </div>
+
       </form>
   </div>
 
   <div fxFlex="86">
     <i class="fas fa-search" aria-hidden="true"></i>
   </div>
-
 </div>
 
 <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" fxLayoutGap="15px">
@@ -97,7 +99,7 @@
     </div>
 
       <div fxFlex="20" fxLayout="row" fxLayoutAlign="end stretch">
-        <i class="fas fa-edit" (click)="openEdit(content1)" ></i>
+        <i class="fas fa-edit" (click)="openEdit(content1)" *ngIf="sessionInfo.role == 'admin'" ></i>
         <!-- modal for edit call function Edit  -->
         <ng-template #content1 let-c="close" let-d="dismiss">
          <div class="modal-header">
@@ -131,12 +133,12 @@
                                        </div>
 
                                          <div class="form-group" fxLayout="row" fxLayoutAlign="space-around stretch" >
-                                           <div fxFlex="40">
+                                           <div fxFlex="55">
                                                <label for="city" class="text-info">City:</label><br>
                                                <input type="text" name="city" id="city" class="form-control">
                                            </div>
-                                           <div fxFlex="20"></div>
-                                           <div fxFlex="40">
+                                           <div fxFlex="7"></div>
+                                           <div fxFlex="42">
                                               <label for="code" class="text-info">Code:</label><br>
                                               <input type="text" name="code" id="code" class="form-control">
                                            </div>
@@ -159,7 +161,30 @@
           </div>
         </ng-template>
 
-        <i class="fas fa-minus-circle" (click)="openDelete(content)"></i>
+
+
+        <i class="fas fa-plus-circle" (click)="openReservation(content3)" *ngIf="sessionInfo.role == 'user'"></i>
+        <ng-template #content3 let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title" style="color: white;" id="modal-basic-title">Reservation...</h4>
+               <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+             <!--  edit input -->
+                <div class="container">
+                    </div>
+          <!-- end edit -->
+           </div>
+           <div class="modal-footer">
+            <button type="button" class="btn btn-info btn-md" (click)="Reserver()">Reservation</button>
+           </div>
+         </ng-template>
+
+
+
+        <i class="fas fa-minus-circle" (click)="openDelete(content)" *ngIf="sessionInfo.role == 'admin'"></i>
         <!--     Modale for delete call function Delete  -->
             <ng-template #content let-c="close" let-d="dismiss">
              <div class="modal-header">
@@ -179,6 +204,8 @@
                <button type="button" class="btn btn-outline-dark" (click)="Delete(parking.parking_id)">Delete</button>
               </div>
             </ng-template>
+
+
       </div>
   </mat-card-header>
 
