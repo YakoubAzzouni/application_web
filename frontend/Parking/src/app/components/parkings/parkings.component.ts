@@ -72,7 +72,7 @@ export class ParkingsComponent implements OnInit {
 
   Add(){
     this.insertVille(this.ville_insertion).then((response: any) =>{
-      this.parking_insertion.ville = response;
+      this.parking_insertion.ville = response.ville_id;
       this.insertParking(this.parking_insertion).then((response1: any) =>{
         this.modalService.dismissAll();
         this.getAllParking();

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 import { User } from 'src/app/models/user/user';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -10,13 +11,14 @@ import { User } from 'src/app/models/user/user';
 })
 export class HomeComponent implements OnInit {
 
-  user: User = new User();
 
-  constructor(@Inject(SESSION_STORAGE) private storage: StorageService) { }
-
-  get sessionInfo(){
-    return this.storage.get("session");
+  constructor(config: NgbCarouselConfig) { 
+    config.interval = 2000;  
+    config.wrap = true;  
+    config.keyboard = false;  
+    config.pauseOnHover = false;  
   }
+
 
   ngOnInit(): void {
   }

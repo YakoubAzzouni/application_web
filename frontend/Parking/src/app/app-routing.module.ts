@@ -5,15 +5,13 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ParkingsComponent } from './components/parkings/parkings.component';
-import { RegisterComponent } from './components/register/register/register.component';
 
 
 const routes: Routes = [
   {path: "home", component: HomeComponent},
   {path: "login", component: LoginComponent },
   {path: "navBar", component: NavBarComponent},
-  {path: "parkings", component: ParkingsComponent},
-  {path: "register", component: RegisterComponent}
+  {path: "parkings", component: ParkingsComponent}
 ];
 
 @NgModule({

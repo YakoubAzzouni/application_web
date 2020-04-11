@@ -1,7 +1,7 @@
-package com.Koubi.parking.service;
+package com.Koubi.parking.Service;
 
-import com.Koubi.parking.Modele.Ville;
-import com.Koubi.parking.repository.VilleRepository;
+import com.Koubi.parking.Model.Ville;
+import com.Koubi.parking.Repository.VilleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,6 @@ import java.util.UUID;
 
 @Service
 public class VilleService {
-    //vvr
     private VilleRepository vr;
     // cons
     @Autowired

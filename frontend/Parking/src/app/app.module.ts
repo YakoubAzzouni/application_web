@@ -11,10 +11,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ParkingsComponent } from './components/parkings/parkings.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { StorageServiceModule } from 'angular-webstorage-service';
-import { RegisterComponent } from './components/register/register/register.component'; // so we can save data in session storage
 
 
 
@@ -24,8 +23,7 @@ import { RegisterComponent } from './components/register/register/register.compo
     LoginComponent,
     HomeComponent,
     NavBarComponent,
-    ParkingsComponent,
-    RegisterComponent
+    ParkingsComponent
   ],
   imports: [
    BrowserModule,
@@ -36,7 +34,7 @@ import { RegisterComponent } from './components/register/register/register.compo
     MatButtonModule,
     NgbModule,
     FormsModule,
-    StorageServiceModule
+    StorageServiceModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

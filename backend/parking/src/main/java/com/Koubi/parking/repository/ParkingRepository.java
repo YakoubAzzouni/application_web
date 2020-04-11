@@ -1,11 +1,8 @@
-package com.Koubi.parking.repository;
+package com.Koubi.parking.Repository;
 
-import com.Koubi.parking.Modele.Parking;
-import com.Koubi.parking.Modele.Ville;
+import com.Koubi.parking.Model.Parking;
 import org.springframework.data.repository.CrudRepository;
 
-
-import java.util.Optional;
 import java.util.UUID;
 
 public interface ParkingRepository extends CrudRepository<Parking, UUID> {

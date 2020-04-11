@@ -7,7 +7,7 @@ import {HttpClient , HttpHeaders} from '@angular/common/http';
 })
 export class ParkingService {
   /*   ******************** */
-  private API_URL = environment.API_URL + "/api/";
+  private API_URL = environment.API_URL + "/parking-service/";
 
   /*   ******************** */
   constructor(private httpClient: HttpClient) { }

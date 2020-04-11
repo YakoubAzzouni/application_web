@@ -1,23 +1,14 @@
-package com.Koubi.parking.service;
+package com.Koubi.parking.Service;
 
-import com.Koubi.parking.Modele.Parking;
-
-import com.Koubi.parking.Modele.Ville;
-import com.Koubi.parking.repository.ParkingRepository;
-
+import com.Koubi.parking.Model.Parking;
+import com.Koubi.parking.Repository.ParkingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
-
-import java.util.List;
 import java.util.UUID;
 
-
-
-@Service // ndirha f service
+@Service
 public class ParkingService {
-
     @Autowired
     private ParkingRepository pr;
     // n3ayto l repository
@@ -32,11 +23,11 @@ public class ParkingService {
     public Parking getParkingById(UUID parking_id){
         return pr.findById(parking_id).get();
     }
-    
+
 
     //insert into parking
     public Parking insertParking(Parking park){
-       return  pr.save(park); // we have to do
+        return  pr.save(park); // we have to do
     }
 
     //delete parking
@@ -56,6 +47,4 @@ public class ParkingService {
         p.setVille(park.getVille());
         return pr.save(p) ;
     }
-
-
 }

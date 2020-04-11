@@ -7,7 +7,7 @@ import {HttpClient , HttpHeaders, HttpParams} from '@angular/common/http';
 })
 export class LoginService {
    /*   ******************** */
-   private API_URL = environment.API_URL + "/api/";
+   private API_URL = environment.API_URL + "/";
 
    /*   ******************** */
    constructor(private httpClient: HttpClient) { }

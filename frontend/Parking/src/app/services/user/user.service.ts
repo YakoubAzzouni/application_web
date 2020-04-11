@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class UserService {
 
    /*   ******************** */
-  private API_URL = environment.API_URL + "/api/";
+  private API_URL = environment.API_URL + "/";
 
   /*   ******************** */
   constructor(private httpClient: HttpClient) { }
@@ -25,15 +25,5 @@ export class UserService {
     );
   }
 
-  creatUser(user){
-    return this.httpClient.post(this.API_URL + "user",
-    JSON.stringify(user),
-    {
-      headers: new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json'),
-      withCredentials: true
-    });
-  }
 
 }
