@@ -4,6 +4,9 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Parking } from 'src/app/models/parking/parking';
 import { Ville } from 'src/app/models/ville/ville';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
+import { CommandeService } from 'src/app/services/commande/commande.service';
+import { Reservation } from 'src/app/models/reservation/reservation';
+import { Client } from 'src/app/models/client/client';
 
 
 @Component({
@@ -26,8 +29,17 @@ export class ParkingsComponent implements OnInit {
   edited_parking: Parking;
   inserted_ville: Ville;
 
+  // ***** modal reservation *****
+  date_in : String;
+  date_out : String;
+  reservation_insertion : Reservation = new Reservation();
+  client_insertion : Client = new Client();
+
+
   //**** constructeur *****
-  constructor(private parkingService: ParkingService, config: NgbModalConfig, private modalService: NgbModal, @Inject(SESSION_STORAGE) private storage: StorageService){
+  constructor(private parkingService: ParkingService, config: NgbModalConfig, private modalService: NgbModal,
+               @Inject(SESSION_STORAGE) private storage: StorageService,
+               private commandeService: CommandeService){
     config.backdrop = 'static';
     config.keyboard = false;
    }
@@ -62,7 +74,7 @@ export class ParkingsComponent implements OnInit {
 
   /******  Methodes  ************/
 
-// pop off de delete
+// pop off the delete
   Delete(parking_id){
     this.deleteParking(parking_id).then((response: any)=>{
       this.modalService.dismissAll();  // after deleting parking close model
@@ -79,6 +91,8 @@ export class ParkingsComponent implements OnInit {
       })
     });
   }
+
+
   /******* methode for parking  ********/
   getAllParking(){
     let promise = new Promise((resolve, reject) => {
@@ -179,5 +193,16 @@ export class ParkingsComponent implements OnInit {
      return promise;
   }
 
+
+
+
+  //******* edit the date format *****************/
+  formatDate_picker(dt){
+    return `${
+      dt.year.toString().padStart(4, '0')}-${
+      dt.month.toString().padStart(2, '0')}-${
+      dt.day.toString().padStart(2, '0')}`;
+
+  }
 
 }

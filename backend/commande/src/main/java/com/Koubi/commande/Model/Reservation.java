@@ -1,5 +1,6 @@
 package com.Koubi.commande.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
@@ -7,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity()
@@ -24,11 +26,13 @@ public class Reservation implements Serializable {
 
     @Column
     @NotNull
-    private String date_in;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date date_in;
 
     @Column
     @NotNull
-    private String date_out;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date date_out;
 
     @Column
     @NotNull
@@ -43,8 +47,8 @@ public class Reservation implements Serializable {
     public Reservation() {
     }
 
-    public Reservation(@JsonProperty("date_in") String date_in,
-                       @JsonProperty("date_out") String date_out,
+    public Reservation(@JsonProperty("date_in") Date date_in,
+                       @JsonProperty("date_out") Date date_out,
                        @JsonProperty("parking_id") UUID parking_id,
                        @JsonProperty("client") Client client) {
         this.client = client;
@@ -53,21 +57,7 @@ public class Reservation implements Serializable {
         this.date_out = date_out;
     }
 
-    public String getDate_in() {
-        return date_in;
-    }
 
-    public void setDate_in(String date_in) {
-        this.date_in = date_in;
-    }
-
-    public String getDate_out() {
-        return date_out;
-    }
-
-    public void setDate_out(String date_out) {
-        this.date_out = date_out;
-    }
 
     public UUID getReservation_id() {
         return reservation_id;
@@ -87,5 +77,21 @@ public class Reservation implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Date getDate_in() {
+        return date_in;
+    }
+
+    public void setDate_in(Date date_in) {
+        this.date_in = date_in;
+    }
+
+    public Date getDate_out() {
+        return date_out;
+    }
+
+    public void setDate_out(Date date_out) {
+        this.date_out = date_out;
     }
 }

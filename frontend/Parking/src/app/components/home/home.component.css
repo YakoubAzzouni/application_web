@@ -1,3 +1,8 @@
-.titre{
-  color: aqua;
+.carousel-imgs {
+  width: 100%;
+}
+
+
+.carousel_color {
+  color: rgb(71, 71, 71);
 }

@@ -13,13 +13,17 @@ public class VilleService {
     // cons
     @Autowired
     public VilleService(VilleRepository vr) { this.vr = vr;}
-    //methode
+    //******* get  *************
     public Ville getVilleById(UUID ville_id){ return vr.findById(ville_id).get(); }
-
+    public Iterable<Ville> getAllVille(){ return vr.findAll();}
+    public Iterable<Ville> findByCity(String city){
+        return vr.findByCity(city);
+    }
+    //********  post *************
     public Ville insertVille(Ville ville){ return vr.save(ville); }
 
-    public Iterable<Ville> getAllVille(){ return vr.findAll();}
 
+    //******** put *********
     public Ville updateVille(UUID ville_id, Ville ville){
         Ville tmp_ville = vr.findById(ville_id).get();
         // recup where id = then modifier l'objet recuperer
@@ -28,13 +32,12 @@ public class VilleService {
         return vr.save(tmp_ville);
     }
 
+    //******** delete ******
     public Ville deleteVille(UUID ville_id){
         Ville tmp_ville = vr.findById(ville_id).get();
         vr.deleteById(ville_id); // delete happens here the other thigs to return it
         return tmp_ville;
     }
 
-    public Iterable<Ville> findByCity(String city){
-        return vr.findByCity(city);
-    }
+
 }

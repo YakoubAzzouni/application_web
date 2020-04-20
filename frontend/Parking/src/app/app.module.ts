@@ -14,6 +14,7 @@ import { ParkingsComponent } from './components/parkings/parkings.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { StorageServiceModule } from 'angular-webstorage-service';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -23,7 +24,8 @@ import { StorageServiceModule } from 'angular-webstorage-service';
     LoginComponent,
     HomeComponent,
     NavBarComponent,
-    ParkingsComponent
+    ParkingsComponent,
+    FooterComponent
   ],
   imports: [
    BrowserModule,
