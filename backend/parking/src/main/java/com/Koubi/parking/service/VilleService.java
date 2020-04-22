@@ -1,10 +1,12 @@
 package com.Koubi.parking.Service;
 
+import com.Koubi.parking.Model.Parking;
 import com.Koubi.parking.Model.Ville;
 import com.Koubi.parking.Repository.VilleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -13,15 +15,20 @@ public class VilleService {
     // cons
     @Autowired
     public VilleService(VilleRepository vr) { this.vr = vr;}
+
     //******* get  *************
     public Ville getVilleById(UUID ville_id){ return vr.findById(ville_id).get(); }
     public Iterable<Ville> getAllVille(){ return vr.findAll();}
     public Iterable<Ville> findByCity(String city){
         return vr.findByCity(city);
     }
+    public List<Parking> getParkingsForVille(UUID ville_id) {
+        Ville v = vr.findById(ville_id).get();
+        return v.getParkings();
+    }
+
     //********  post *************
     public Ville insertVille(Ville ville){ return vr.save(ville); }
-
 
     //******** put *********
     public Ville updateVille(UUID ville_id, Ville ville){

@@ -1,9 +1,10 @@
+<div *ngIf="control == false">
 <div  fxLayout="row" fxLayoutAlign="start stretch">
-  <div fxFlex="14">
+  <div fxFlex="15">
       <form class="form-inline md-form form-sm mt-0" fxLayout="row" fxLayoutAlign="start stretch">
 
 
-        <div fxFlex="10">
+        <div fxFlex="15">
           <i class="fas fa-plus" (click)="openAdd(content2)" *ngIf="sessionInfo.role == 'Admin'"></i>
           <!-- modal for add parking  -->
           <ng-template #content2 let-c="close" let-d="dismiss">
@@ -31,31 +32,29 @@
                                               <label for="adress" class="text-info">Adress:</label><br>
                                               <input type="text" name="adress"  class="form-control" [(ngModel)]="parking_insertion.adress">
                                           </div>
-                                          <div class="form-group">
+
+
                                             <div class="form-group">
                                               <label for="Price" class="text-info">Price:</label><br>
                                               <input type="text" name="Price"  class="form-control" [(ngModel)]="parking_insertion.price">
                                           </div>
-                                          </div>
 
-                                          <div class="form-group" fxLayout="row" fxLayoutAlign="space-around stretch" >
-                                            <div fxFlex="55">
-                                                <label for="city" class="text-info">City:</label><br>
-                                                <input type="text" name="city" id="city" class="form-control" [(ngModel)]="ville_insertion.city">
-                                            </div>
-                                            <div fxFlex="7"></div>
-                                            <div fxFlex="42">
-                                               <label for="code" class="text-info">Code:</label><br>
-                                               <input type="text" name="code" id="code" class="form-control" [(ngModel)]="ville_insertion.code">
-                                            </div>
+
+                                          <div class="form-group" >
+                                            <label for="city" class="text-info">City:</label><br>
+                                            <select class="form-control" id="city" name="city"
+                                            [(ngModel)]="selected_ville" >
+                                            <option value="0">Select-a-city</option>
+                                            <option *ngFor="let ville of villes" [value]="ville.ville_id">{{ville.city}}</option>
+                                            </select>
                                         </div>
 
-                                          <div class="form-group">
+
                                             <div class="form-group">
                                               <label for="nombre de place" class="text-info">Nombre de place:</label><br>
                                               <input type="text" name="nombre place"  class="form-control" [(ngModel)]="parking_insertion.nb_place">
                                           </div>
-                                          </div>
+
 
                                       </form>
                                   </div>
@@ -70,22 +69,30 @@
           </ng-template>
        </div>
 
-        <div fxFlex="90">
-            <input class="form-control form-control-sm ml-3 " type="text" placeholder="Search By Name"
-            aria-label="Search">
+        <div fxFlex="85">
+          <select class="form-control" id="city_search" name="city_search"
+          [(ngModel)]="selected_ville_search" style="width: 180px;" >
+          <option value="0">Select-a-city</option>
+          <option *ngFor="let ville of villes" [value]="ville.ville_id">{{ville.city}}</option>
+          </select>
         </div>
 
       </form>
   </div>
 
-  <div fxFlex="86">
-    <i class="fas fa-search" aria-hidden="true"></i>
+  <div fxFlex="85">
+    <i class="fas fa-search" aria-hidden="true" (click)="Search()"></i>
   </div>
 </div>
 
-<div fxLayout="row wrap" fxLayoutAlign="space-around stretch" fxLayoutGap="15px">
+
+<ng-container *ngIf="none == true">
+  <h5 style="margin-left: 10px; margin-top: 15px;"> there Is no parkings in this town</h5>
+  <div style="height: 450px;"></div>
+</ng-container>
+<div fxLayout="row wrap" fxLayoutAlign="space-around stretch" fxLayoutGap="15px" >
 <ng-container *ngFor="let parking of parkings">
-<mat-card class="example-card">
+<mat-card class="example-card" >
     <mat-card-header fxLayout="row" fxLayoutAlign="start stretch">
 
     <div   fxFlex="13" >
@@ -117,35 +124,35 @@
                                        <h3 class="text-center text-info">Edit</h3>
 
                                        <div class="form-group">
-                                           <label for="name" class="text-info">Name:</label><br>
-                                           <input type="text" name="name" id="name" class="form-control">
-                                       </div>
+                                        <label for="name" class="text-info">Name:</label><br>
+                                        <input type="text" name="name" id="name" class="form-control" [(ngModel)]="parking_insertion.name">
+                                    </div>
 
-                                       <div class="form-group">
-                                           <label for="price" class="text-info">Price:</label><br>
-                                           <input type="text" name="price" id="price" class="form-control">
-                                       </div>
-
-                                       <div class="form-group">
+                                    <div class="form-group">
                                         <label for="adress" class="text-info">Adress:</label><br>
-                                        <input type="text" name="adress" id="adress" class="form-control">
-                                       </div>
+                                        <input type="text" name="adress"  class="form-control" [(ngModel)]="parking_insertion.adress">
+                                    </div>
 
-                                         <div class="form-group" fxLayout="row" fxLayoutAlign="space-around stretch" >
-                                           <div fxFlex="55">
-                                               <label for="city" class="text-info">City:</label><br>
-                                               <input type="text" name="city" id="city" class="form-control">
-                                           </div>
-                                           <div fxFlex="7"></div>
-                                           <div fxFlex="42">
-                                              <label for="code" class="text-info">Code:</label><br>
-                                              <input type="text" name="code" id="code" class="form-control">
-                                           </div>
-                                       </div>
 
-                                       <div class="form-group">
-                                        <label for="nb_place" class="text-info">Number of places:</label><br>
-                                        <input type="text" name="nb_place" id="nb_place" class="form-control">
+                                      <div class="form-group">
+                                        <label for="Price" class="text-info">Price:</label><br>
+                                        <input type="text" name="Price"  class="form-control" [(ngModel)]="parking_insertion.price">
+                                    </div>
+
+
+                                    <div class="form-group" >
+                                      <label for="city" class="text-info">City:</label><br>
+                                      <select class="form-control" id="city" name="city"
+                                      [(ngModel)]="selected_ville" >
+                                      <option value="0">Select-a-city</option>
+                                      <option *ngFor="let ville of villes" [value]="ville.ville_id">{{ville.city}}</option>
+                                      </select>
+                                  </div>
+
+
+                                      <div class="form-group">
+                                        <label for="nombre de place" class="text-info">Nombre de place:</label><br>
+                                        <input type="text" name="nombre place"  class="form-control" [(ngModel)]="parking_insertion.nb_place">
                                     </div>
 
                                    </form>
@@ -156,13 +163,13 @@
          <!-- end edit -->
           </div>
           <div class="modal-footer">
-           <button type="button" class="btn btn-info btn-md" (click)="Edit()">Edit</button>
+           <button type="button" class="btn btn-info btn-md" (click)="Edit(parking.parking_id)">Edit</button>
           </div>
         </ng-template>
 
 
 
-        <i class="fas fa-plus-circle" (click)="openReservation(content3)" *ngIf="sessionInfo.role == 'user'"></i>
+        <i class="fas fa-plus-circle" (click)="openReservation(content3)" *ngIf="sessionInfo.role != 'Admin'"></i>
         <ng-template #content3 let-c="close" let-d="dismiss">
           <div class="modal-header">
             <h4 class="modal-title" style="color: white;" id="modal-basic-title">Reservation...</h4>
@@ -171,19 +178,61 @@
              </button>
            </div>
            <div class="modal-body">
-             <!--  edit input -->
+             <!--  reservation input -->
                 <div class="container">
+                  <div id="" class="row justify-content-center align-items-center">
+                    <div id="" class="col-md-6">
+                        <div id="" class="col-md-12">
+                            <form id="login-form" class="form" action="" method="post">
+                                <h3 class="text-center text-info">Reservation</h3>
+
+                                <div class="form-group">
+                                 <label for="name" class="text-info">Date_in:</label><br>
+                                 <input class="form-control" placeholder="yyyy-mm-dd" name="di" ngbDatepicker #di="ngbDatepicker" [(ngModel)]="date_in">
+                                 <button class="btn btn-outline-secondary" (click)="di.toggle()" type="button">
+                                 </button>
+                                </div>
+
+                             <div class="form-group">
+                                 <label for="adress" class="text-info">Date_out:</label><br>
+                                 <input class="form-control" placeholder="yyyy-mm-dd" name="do" ngbDatepicker #do="ngbDatepicker" [(ngModel)]="date_out">
+                                 <button class="btn btn-outline-secondary" (click)="do.toggle()" type="button">
+                                 </button>
+                             </div>
+
+
+                               <div class="form-group">
+                                 <label for="name" class="text-info">Name:</label><br>
+                                 <input type="text" name="name"  class="form-control" [(ngModel)]="client_insertion.name">
+                             </div>
+
+
+                             <div class="form-group" >
+                               <label for="email" class="text-info">Email:</label><br>
+                               <input type="text" name="email"  class="form-control" [(ngModel)]="client_insertion.email">
+                           </div>
+
+
+                               <div class="form-group">
+                                 <label for="plate_number" class="text-info">Plate number:</label><br>
+                                 <input type="text" name="plate_number"  class="form-control" [(ngModel)]="client_insertion.plate_number">
+                             </div>
+
+                            </form>
+                        </div>
                     </div>
-          <!-- end edit -->
+                </div>
+                </div>
+          <!-- end reservation -->
            </div>
            <div class="modal-footer">
-            <button type="button" class="btn btn-info btn-md" (click)="Reserver()">Reservation</button>
+            <button type="button" class="btn btn-info btn-md" (click)="Reserver(parking.parking_id)">Reservation</button>
            </div>
          </ng-template>
 
 
 
-        <i class="fas fa-minus-circle" (click)="openDelete(content)" *ngIf="sessionInfo.role == 'admin'"></i>
+        <i class="fas fa-minus-circle" (click)="openDelete(content)" *ngIf="sessionInfo.role == 'Admin'"></i>
         <!--     Modale for delete call function Delete  -->
             <ng-template #content let-c="close" let-d="dismiss">
              <div class="modal-header">
@@ -208,7 +257,7 @@
       </div>
   </mat-card-header>
 
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <img mat-card-image src="/../assets/parking.png" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <h2>Infos: </h2>
     <p><span class="show"> Code postal: </span>{{parking.ville.code}}</p>
@@ -220,5 +269,16 @@
   </mat-card-actions>
 </mat-card>
 </ng-container>
+</div>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="space-around stretch" *ngIf="control == true">
+  <div>
+    <h5>Please take a picture of your QR Code</h5> <br>
+    <img src="/../assets/qrcode.png" alt="">
+  </div>
+  <div>
+    <button type="button" class="btn btn-dark btn-md" (click)="Done()">Done</button>
+  </div>
 </div>
 

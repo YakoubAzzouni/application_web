@@ -9,8 +9,12 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink="/parkings" >Parkings <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" >Villes</a>
+      <li class="nav-item active" *ngIf="sessionInfo.status == 'LOGGED'" ngbDropdown>
+       <a class="nav-link" id="dropdownBasic2" ngbDropdownToggle>Settings <span class="sr-only">(current)</span></a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+          <button ngbDropdownItem routerLink="/settings" style="color:cyan;" >Reservation</button>
+          <button ngbDropdownItem routerLink="/settings-ville" style="color:cyan;" >Ville</button>
+        </div>
       </li>
 
     </ul>
@@ -24,9 +28,7 @@
         <li class="nav-item active" *ngIf="sessionInfo.status == 'LOGGED'" ngbDropdown>
           <i class="fas fa-grin" ></i><a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{sessionInfo.username}} <span class="sr-only">(current)</span></a>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem style="color: white;" ></button>
-            <button ngbDropdownItem style="color: white;" >Settings</button>
-            <button ngbDropdownItem (click)="leave()" style="color: white;" >LogOut</button>
+            <button ngbDropdownItem (click)="leave()" style="color:cyan;" >LogOut</button>
           </div>
         </li>
 

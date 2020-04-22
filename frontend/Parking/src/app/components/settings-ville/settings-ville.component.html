@@ -1,0 +1,88 @@
+
+<div>
+  <h4 style="margin-left: 10px; margin-top: 10px;"> in order to create new ville</h4>
+  <button type="button" class="btn btn-outline-dark" (click)="openCreate(content3)" style="margin-left: 10px;">Create</button>
+  <ng-template #content3 let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" style="color: white;" id="modal-basic-title">From To Create...</h4>
+         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <!--  reservation input -->
+          <div class="container">
+            <div id="" class="row justify-content-center align-items-center">
+              <div id="" class="col-md-6">
+                  <div id="" class="col-md-12">
+                      <form id="login-form" class="form" action="" method="post">
+                          <h3 class="text-center text-info">Create A ville</h3>
+
+
+                       <div class="form-group" >
+                         <label for="city" class="text-info">City:</label><br>
+                         <input type="text" name="city"  class="form-control" [(ngModel)]="ville_insertion.city">
+                     </div>
+
+
+                         <div class="form-group">
+                           <label for="code" class="text-info">Code:</label><br>
+                           <input type="text" name="code"  class="form-control" [(ngModel)]="ville_insertion.code">
+                       </div>
+
+                      </form>
+                  </div>
+              </div>
+          </div>
+          </div>
+    <!-- end reservation -->
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-info btn-md" (click)="Create()">Create</button>
+     </div>
+   </ng-template>
+</div>
+
+<div style="height: 400px;">
+<h4 style="margin-left: 10px; margin-top: 40px;"> Check out The Cities </h4>
+<table class="table table-striped" style=" margin-top: 10px;">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">ID</th>
+    <th scope="col">Code</th>
+    <th scope="col">City</th>
+    <th scope="col">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let ville of villes; index as i" style="background-color: white;">
+    <th scope="row" >{{ i + 1 }}</th>
+    <td >{{ ville.ville_id }}</td>
+    <td>{{ ville.code }}</td>
+    <td>{{ ville.city }}</td>
+
+    <td>
+      <button type="button" class="btn btn-info btn-md" (click)="openDelete(content1)" style="background-color: red;">Delete</button>
+          <ng-template #content1 let-c="close" let-d="dismiss">
+            <div class="modal-header">
+            <h4 class="modal-title" style="color: white;" id="modal-basic-title">Warning</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p style="font-size: 25px; font-weight: bold;">Are you sure that you want to delete this Ville: </p>
+                <p><span class="show">ID:</span> {{ville.ville_id}}</p>
+                <p><span class="show">City:</span> {{ville.city}}</p>
+                <p><span class="show">Code:</span> {{ville.code}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" (click)="Delete(ville.ville_id)">Delete</button>
+            </div>
+          </ng-template>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>

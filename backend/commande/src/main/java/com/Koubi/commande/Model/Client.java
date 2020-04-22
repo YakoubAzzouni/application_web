@@ -1,6 +1,7 @@
 package com.Koubi.commande.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity()
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "client")
 public class Client implements Serializable {
 
@@ -33,7 +35,7 @@ public class Client implements Serializable {
 
     @Column
     @NotNull
-    private double plate_number;
+    private String plate_number;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference
@@ -44,7 +46,7 @@ public class Client implements Serializable {
     }
 
     public Client(@JsonProperty("name") String name,
-                  @JsonProperty("plate_number") double plate_number,
+                  @JsonProperty("plate_number") String plate_number,
                   @JsonProperty("email") String email) {
         this.email = email;
         this.name = name;
@@ -64,13 +66,7 @@ public class Client implements Serializable {
         return client_id;
     }
 
-    public double getPlate_number() {
-        return plate_number;
-    }
 
-    public void setPlate_number(double plate_number) {
-        this.plate_number = plate_number;
-    }
 
     public String getEmail() {
         return email;
@@ -82,5 +78,13 @@ public class Client implements Serializable {
 
     public List<Reservation> getReservations() {
         return reservations;
+    }
+
+    public String getPlate_number() {
+        return plate_number;
+    }
+
+    public void setPlate_number(String plate_number) {
+        this.plate_number = plate_number;
     }
 }

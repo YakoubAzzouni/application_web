@@ -65,7 +65,7 @@ public class Ville implements Serializable {
     public UUID getVille_id() {
         return ville_id;
     }
-
+    
     public List<Parking> getParkings() {
         return parkings;
     }

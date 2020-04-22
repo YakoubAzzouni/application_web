@@ -1,0 +1,50 @@
+
+  <h5 class="affiche">choose Date To see the clients Reservations</h5>
+  <div fxLayout="row" fxLayoutAlign="start stretch" class="affiche" fxLayoutGap="15px">
+    <div >
+        <label for="name" class="text-info">Date_in:</label><br>
+        <input class="form-control" placeholder="yyyy-mm-dd" name="di" ngbDatepicker #di="ngbDatepicker" [(ngModel)]="date_in" required>
+        <button class="btn btn-outline-secondary" (click)="di.toggle()" type="button">
+        </button>
+      </div>
+
+      <div >
+        <label for="adress" class="text-info">Date_out:</label><br>
+        <input class="form-control" placeholder="yyyy-mm-dd" name="do" ngbDatepicker #do="ngbDatepicker" [(ngModel)]="date_out" required>
+        <button class="btn btn-outline-secondary" (click)="do.toggle()" type="button">
+        </button>
+      </div>
+
+      <div>
+        <label for="btn" class="text-info" >Click to check:</label> <br>
+        <input class="form-control"  type="button" class="btn btn-info btn-md" value="Check" (click)="Show()">
+      </div>
+  </div>
+
+ <h5 class="affiche" *ngIf="none == true" > there is no reservations in this marge</h5>
+ <div style="height: 400px;">
+<table class="table table-striped" style=" margin-top: 10px; " *ngIf="show == true && none == false" >
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">name</th>
+    <th scope="col">email</th>
+    <th scope="col">Plate_number</th>
+    <th scope="col">Date_in</th>
+    <th scope="col">Date_out</th>
+    <th scope="col">parking_id</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let reservation of reservations; index as i" style="background-color: white;">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ reservation.client.nom }}</td>
+    <td>{{ reservation.client.email }}</td>
+    <td>{{ reservation.client.plate_number }}</td>
+    <td>{{reservation.date_in}}</td>
+    <td>{{reservation.date_out}}</td>
+    <td>{{reservation.parking_id}}</td>
+  </tr>
+  </tbody>
+</table>
+ </div>

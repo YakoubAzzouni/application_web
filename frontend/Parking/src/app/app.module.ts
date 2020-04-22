@@ -15,6 +15,12 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { FooterComponent } from './components/footer/footer.component';
+import {MatSelectModule} from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SettingsComponent } from './components/settings/settings.component';
+import { SettingsVilleComponent } from './components/settings-ville/settings-ville.component';
+
+
 
 
 
@@ -25,7 +31,10 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     NavBarComponent,
     ParkingsComponent,
-    FooterComponent
+    FooterComponent,
+    SettingsComponent,
+    SettingsVilleComponent,
+
   ],
   imports: [
    BrowserModule,
@@ -37,6 +46,8 @@ import { FooterComponent } from './components/footer/footer.component';
     NgbModule,
     FormsModule,
     StorageServiceModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 export class Client {
   name?: String;
-  plate_number?: DoubleRange;
+  plate_number?: String;
   email?: String;
 }

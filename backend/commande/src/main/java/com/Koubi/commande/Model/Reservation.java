@@ -26,13 +26,13 @@ public class Reservation implements Serializable {
 
     @Column
     @NotNull
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date date_in;
+    @JsonFormat(pattern="yyyy-mm-dd")
+    private Date dateIn;
 
     @Column
     @NotNull
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date date_out;
+    @JsonFormat(pattern="yyyy-mm-dd")
+    private Date dateOut;
 
     @Column
     @NotNull
@@ -47,14 +47,14 @@ public class Reservation implements Serializable {
     public Reservation() {
     }
 
-    public Reservation(@JsonProperty("date_in") Date date_in,
-                       @JsonProperty("date_out") Date date_out,
+    public Reservation(@JsonProperty("date_in") Date dateIn,
+                       @JsonProperty("date_out") Date dateOut,
                        @JsonProperty("parking_id") UUID parking_id,
                        @JsonProperty("client") Client client) {
         this.client = client;
         this.parking_id = parking_id;
-        this.date_in = date_in;
-        this.date_out = date_out;
+        this.dateIn = dateIn;
+        this.dateOut = dateOut;
     }
 
 
@@ -79,19 +79,20 @@ public class Reservation implements Serializable {
         this.client = client;
     }
 
-    public Date getDate_in() {
-        return date_in;
+
+    public Date getDateIn() {
+        return dateIn;
     }
 
-    public void setDate_in(Date date_in) {
-        this.date_in = date_in;
+    public void setDateIn(Date dateIn) {
+        this.dateIn = dateIn;
     }
 
-    public Date getDate_out() {
-        return date_out;
+    public Date getDateOut() {
+        return dateOut;
     }
 
-    public void setDate_out(Date date_out) {
-        this.date_out = date_out;
+    public void setDateOut(Date dateOut) {
+        this.dateOut = dateOut;
     }
 }

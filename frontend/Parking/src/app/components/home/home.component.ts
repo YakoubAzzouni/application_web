@@ -4,6 +4,8 @@ import { User } from 'src/app/models/user/user';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,11 +14,11 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 export class HomeComponent implements OnInit {
 
 
-  constructor(config: NgbCarouselConfig) { 
-    config.interval = 2000;  
-    config.wrap = true;  
-    config.keyboard = false;  
-    config.pauseOnHover = false;  
+  constructor(config: NgbCarouselConfig) {
+    config.interval = 2000;
+    config.wrap = true;
+    config.keyboard = false;
+    config.pauseOnHover = false;
   }
 
 
