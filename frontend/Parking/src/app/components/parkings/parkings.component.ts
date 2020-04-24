@@ -125,9 +125,12 @@ export class ParkingsComponent implements OnInit {
   }
 
   Search(){
-    this.getParkingsForVille(this.selected_ville_search);
-    this.parkings = this.parkings_for_ville;
-    if(this.parkings.length == 0){ this.none = true;}
+    this.none = false;
+    this.getParkingsForVille(this.selected_ville_search).then((response : any) => {
+      this.parkings = this.parkings_for_ville;
+      if(this.parkings.length == 0){ this.none = true;}
+    });
+
   }
 
   Reserver(parking_id){

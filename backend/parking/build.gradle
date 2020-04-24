@@ -14,6 +14,10 @@ configurations {
 		extendsFrom developmentOnly
 	}
 }
+ext {
+
+	dekorateVersion = System.getProperty("dekorateVersion", "0.10.0")
+}
 
 repositories {
 	mavenCentral()
@@ -22,8 +26,21 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:2.2.2.RELEASE'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:2.2.2.RELEASE'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+
+	implementation 'org.springframework.cloud:spring-cloud-kubernetes-discovery'
+
+	//implementation 'org.springframework.cloud:spring-cloud-netflix-eureka-client'
+	implementation 'org.springframework.cloud:spring-cloud-netflix-ribbon'
+	implementation 'org.springframework.cloud:spring-cloud-openfeign-core:2.2.2.RELEASE'
+	implementation 'org.springframework.cloud:spring-cloud-kubernetes-ribbon:1.1.1.RELEASE'
+
+	implementation("io.dekorate:dekorate-spring-boot:${dekorateVersion}")
+	implementation("io.dekorate:kubernetes-annotations:${dekorateVersion}")
+	annotationProcessor("io.dekorate:kubernetes-annotations:${dekorateVersion}")
+	annotationProcessor("io.dekorate:dekorate-spring-boot:${dekorateVersion}")
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

@@ -22,9 +22,7 @@ export class SettingsComponent implements OnInit {
   constructor(private commandeService : CommandeService,  private config_date: NgbDatepickerConfig) {
     const currentDate = new Date();
 
-    config_date.maxDate = {year: 2099, month: 12, day: 31};
 
-    config_date.outsideDays = 'hidden';
    }
 
   ngOnInit() {
